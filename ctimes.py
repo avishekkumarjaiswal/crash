@@ -620,8 +620,8 @@ if st.session_state.logged_in:
                         else:
                             try:
                                 st.session_state.auto_cashout = float(auto_cashout_input)
-                                if st.session_state.auto_cashout < 1.1:
-                                    st.error("Auto Cashout must be at least 1.1x if set.")
+                                if st.session_state.auto_cashout < 1.0:
+                                    st.error("Auto Cashout must be at least 1.0x if set.")
                                     st.stop()
                             except:
                                 st.error("Invalid Auto Cashout value. Enter a number like 2.5.")
@@ -631,7 +631,7 @@ if st.session_state.logged_in:
                         
                         # --- Adjust crash_multiplier based on balance ---
                         if balance > 30000:
-                            st.session_state.crash_multiplier = round(random.uniform(1.1, 2.0), 2)  # Low chance
+                            st.session_state.crash_multiplier = round(random.uniform(1.0, 2.0), 2)  # Low chance
                             speed_factor = 0.2  # Moderate speed
                         elif balance > 15000:
                             st.session_state.crash_multiplier = round(random.uniform(2.0, 4.0), 2)  # Moderate chance
